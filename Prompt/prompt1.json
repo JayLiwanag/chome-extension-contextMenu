@@ -1,0 +1,35 @@
+[
+    {
+        "ItemID": "10",
+        "Name": "Classification 10",
+        "Phase": [
+            "PT",
+            "IT",
+            "ST"
+        ],
+        "Description": "This is a description for Classification 10",
+        "Rule": "rule1.json"
+    },
+    {
+        "ItemID": "20",
+        "Name": "Classification 20",
+        "Phase": [
+            "PT",
+            "IT",
+            "ST"
+        ],
+        "Description": "This is a description for Classification 20",
+        "Rule": "rule1.json"
+    },
+    {
+        "ItemID": "30",
+        "Name": "Classification 30",
+        "Phase": [
+            "PT",
+            "IT",
+            "ST"
+        ],
+        "Description": "This is a description for Classification 30",
+        "Rule": "rule1.json"
+    }
+]
