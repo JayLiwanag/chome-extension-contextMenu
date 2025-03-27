@@ -49,29 +49,22 @@ chrome.runtime.onMessage.addListener(async (request, sender, sendResponse) => {
         // Store selected text
         chrome.storage.local.set({ selectedText: selectedText });
 
-        // get promt1 JSON data
+        // get promt1 JSON data and store specific item
         let prompt1 = await getJsonData(prompt1JSON);
-        chrome.storage.local.set({ prompt1: prompt1 });
-
-        // get Answer from ChatAI for Finding Classification
         let i = Math.floor(Math.random() * (prompt1.length));
+        chrome.storage.local.set({ prompt1: prompt1[i] }); // Changed to store specific item
 
         // get Rule JSON data
         let rule = await getRuleJson(prompt1[i].Rule);
         console.log(prompt1[i]);
-        // console.log(rule);
 
         // get promt2 JSON data using rule
         let prompt2 = await getJsonData(prompt2JSON);
-        chrome.storage.local.set({ prompt2: prompt2 });
-        // console.log(prompt2);
-
-        // Compare rule and prompt2, to get the list of valid products categories
         let list_of_valid_product_categories = getMatchData(rule, prompt2, true);
-        // console.log(list_of_valid_product_categories);
 
-        // get Answer from ChatAI for Finding Product Classification
+        // get specific product classification and store it
         i = Math.floor(Math.random() * (list_of_valid_product_categories.length));
+        chrome.storage.local.set({ prompt2: list_of_valid_product_categories[i] }); // Changed to store specific item
 
         let ai_product_classification_answer = list_of_valid_product_categories[i];
         console.log(ai_product_classification_answer);
@@ -80,10 +73,8 @@ chrome.runtime.onMessage.addListener(async (request, sender, sendResponse) => {
         // console.log(root_cause);
 
         let prompt3 = await getJsonData(prompt3JSON);
-        chrome.storage.local.set({ prompt3: prompt3 });
-        // console.log(prompt3);
-
         let list_of_valid_root_cause_categories = getMatchData(root_cause, prompt3, false);
+        chrome.storage.local.set({ prompt3: list_of_valid_root_cause_categories }); // Changed to store root cause categories
         console.log(list_of_valid_root_cause_categories);
 
         // Instead of directly creating window, send message to background script
