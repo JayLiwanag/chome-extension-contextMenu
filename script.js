@@ -46,8 +46,12 @@ chrome.runtime.onMessage.addListener(async (request, sender, sendResponse) => {
     if (request.action === 'sendPrompt') {
         let selectedText = request.selectedText;
 
+        // Store selected text
+        chrome.storage.local.set({ selectedText: selectedText });
+
         // get promt1 JSON data
         let prompt1 = await getJsonData(prompt1JSON);
+        chrome.storage.local.set({ prompt1: prompt1 });
 
         // get Answer from ChatAI for Finding Classification
         let i = Math.floor(Math.random() * (prompt1.length));
@@ -59,6 +63,7 @@ chrome.runtime.onMessage.addListener(async (request, sender, sendResponse) => {
 
         // get promt2 JSON data using rule
         let prompt2 = await getJsonData(prompt2JSON);
+        chrome.storage.local.set({ prompt2: prompt2 });
         // console.log(prompt2);
 
         // Compare rule and prompt2, to get the list of valid products categories
@@ -75,12 +80,15 @@ chrome.runtime.onMessage.addListener(async (request, sender, sendResponse) => {
         // console.log(root_cause);
 
         let prompt3 = await getJsonData(prompt3JSON);
+        chrome.storage.local.set({ prompt3: prompt3 });
         // console.log(prompt3);
 
         let list_of_valid_root_cause_categories = getMatchData(root_cause, prompt3, false);
         console.log(list_of_valid_root_cause_categories);
 
-        // send the list_of_valid_root_cause_categories to ChatAI API
-        // get the answer from ChatAI API
+        // Instead of directly creating window, send message to background script
+        chrome.runtime.sendMessage({
+            action: 'openPopup'
+        });
     }
 });

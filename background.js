@@ -4,11 +4,6 @@ chrome.runtime.onInstalled.addListener(() => {
         title: 'RCA generator',
         contexts: ['selection']
     });
-    chrome.contextMenus.create({
-        id: 'showPopup',
-        title: 'Popup generator',
-        contexts: ['selection']
-    });
 });
 
 chrome.contextMenus.onClicked.addListener((info) => {
@@ -20,12 +15,16 @@ chrome.contextMenus.onClicked.addListener((info) => {
             });
         });
     }
-    if (info.menuItemId === "showPopup") {
+});
+
+chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
+    if (request.action === 'openPopup') {
         chrome.windows.create({
-            url: chrome.runtime.getURL("popup.html"),
-            type: "popup",
-            width: 600,
-            height: 450
+            url: 'popup.html',
+            type: 'popup',
+            width: 450,
+            height: 600,
+            focused: true
         });
     }
 });

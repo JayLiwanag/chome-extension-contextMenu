@@ -4,12 +4,10 @@
     "manifest_version": 3,
     "description": "A Chrome extension to generate cover letters using ChatGPT API.",
     "permissions": [
-        "activeTab",
-        "storage",
-        "scripting",
         "contextMenus",
-        "tabs",
-        "webRequest"
+        "storage",
+        "clipboardWrite",
+        "windows"
     ],
     "icons": {
         "16": "icon.png",
@@ -21,6 +19,9 @@
     ],
     "background": {
         "service_worker": "background.js"
+    },
+    "action": {
+        "default_popup": "popup.html"
     },
     "content_scripts": [
         {

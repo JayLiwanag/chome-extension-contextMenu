@@ -5,23 +5,39 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Popup Screen</title>
+    <title>RCA Generator</title>
     <link rel="stylesheet" href="./popup.css">
 </head>
 
 <body>
-    <h1>This is your popup!</h1>
-
-    <label for="textArea1">Text Area 1:</label><br>
-    <textarea id="textArea1" rows="3" cols="50"></textarea><br><br>
-
-    <label for="textArea2">Text Area 2:</label><br>
-    <textarea id="textArea2" rows="3" cols="50"></textarea><br><br>
-
-    <label for="textArea3">Text Area 3:</label><br>
-    <textarea id="textArea3" rows="3" cols="50"></textarea><br><br>
-
-    <p>Selected text: <span id="selectedText"></span></p>
+    <div class="header">
+        RCA Generator
+    </div>
+    <div class="container">
+        <h4>Defect description</h4>
+        <textarea id="selectedText" readonly></textarea>
+    </div>
+    <div class="container">
+        <h4>Review Classification</h4>
+        <div class="textarea-container">
+            <textarea id="prompt1" readonly></textarea>
+            <button id="copyPrompt1" class="copy-button">Copy</button>
+        </div>
+    </div>
+    <div class="container">
+        <h4>Cause creation category</h4>
+        <div class="textarea-container">
+            <textarea id="prompt2" readonly></textarea>
+            <button id="copyPrompt2" class="copy-button">Copy</button>
+        </div>
+    </div>
+    <div class="container">
+        <h4>Root cause</h4>
+        <div class="textarea-container">
+            <textarea id="prompt3" readonly></textarea>
+            <button id="copyPrompt3" class="copy-button">Copy</button>
+        </div>
+    </div>
     <script src="./popup.js"></script>
 </body>
 

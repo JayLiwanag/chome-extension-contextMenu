@@ -1,10 +1,25 @@
-body {
-    font-family: sans-serif;
-    padding: 10px;
-    overflow: hidden;
-    /* Hide scrollbars */
+/* Root variables and resets */
+:root {
+    --primary-green: #2e7d32;
+    --secondary-green: #43a047;
+    --light-green: #f1f8e9;
+    --hover-green: #1b5e20;
+    --border-color: #c8e6c9;
+}
+
+* {
+    box-sizing: border-box;
     margin: 0;
-    /* Remove default margins */
+    padding: 0;
+}
+
+/* Body styling */
+body {
+    width: 420px;
+    padding: 12px;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+    background-color: #f0f2f5;
+    overflow-x: hidden;
 }
 
 h1 {
@@ -26,13 +41,30 @@ p {
     /* Give it a distinct color */
 }
 
+/* Textarea container */
+.textarea-container {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+/* Textarea styling */
 textarea {
     width: 100%;
-    /* Make textareas take full width */
-    margin-bottom: 10px;
-    /* Add space below each textarea */
-    box-sizing: border-box;
-    /* Include padding and border in width */
+    min-height: 100px;
+    padding: 12px;
+    border: 1px solid var(--border-color);
+    border-radius: 6px;
+    font-size: 14px;
+    resize: vertical;
+    background-color: var(--light-green);
+}
+
+textarea:focus {
+    outline: none;
+    border-color: var(--primary-green);
+    box-shadow: 0 0 0 2px rgba(46, 125, 50, 0.2);
 }
 
 label {
@@ -40,4 +72,76 @@ label {
     /* Make labels appear on their own line */
     margin-bottom: 5px;
     /* Add space below each label */
+}
+
+/* Container styling */
+.container {
+    background-color: white;
+    border-radius: 8px;
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+    padding: 16px;
+    margin-bottom: 16px;
+    width: 100%;
+}
+
+h3 {
+    color: var(--primary-green);
+    margin-top: 0;
+    font-size: 1.1rem;
+    font-weight: 600;
+    margin-bottom: 12px;
+}
+
+/* Headings */
+h4 {
+    color: var(--primary-green);
+    font-size: 0.95rem;
+    font-weight: 600;
+    margin-bottom: 12px;
+}
+
+button {
+    background-color: var(--primary-green);
+    color: white;
+    border: none;
+    border-radius: 6px;
+    padding: 8px 16px;
+    font-size: 14px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+}
+
+button:hover {
+    background-color: var(--hover-green);
+}
+
+button:active {
+    transform: scale(0.98);
+}
+
+/* Header styling */
+.header {
+    background-color: var(--primary-green);
+    color: white;
+    padding: 12px;
+    border-radius: 8px;
+    margin-bottom: 16px;
+    font-weight: 600;
+    font-size: 18px;
+    width: 100%;
+}
+
+/* Button styling */
+.copy-button {
+    align-self: flex-end;
+    background-color: var(--primary-green);
+    color: white;
+    border: none;
+    border-radius: 4px;
+    padding: 6px 12px;
+    font-size: 12px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
 }
