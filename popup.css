@@ -1,0 +1,43 @@
+body {
+    font-family: sans-serif;
+    padding: 10px;
+    overflow: hidden;
+    /* Hide scrollbars */
+    margin: 0;
+    /* Remove default margins */
+}
+
+h1 {
+    font-size: 1.5em;
+    /* Adjust font size as needed */
+    margin-bottom: 10px;
+    /* Add some spacing below the heading */
+}
+
+p {
+    font-size: 1em;
+    /* Adjust font size as needed */
+}
+
+#selectedText {
+    font-weight: bold;
+    /* Make selected text bold */
+    color: blue;
+    /* Give it a distinct color */
+}
+
+textarea {
+    width: 100%;
+    /* Make textareas take full width */
+    margin-bottom: 10px;
+    /* Add space below each textarea */
+    box-sizing: border-box;
+    /* Include padding and border in width */
+}
+
+label {
+    display: block;
+    /* Make labels appear on their own line */
+    margin-bottom: 5px;
+    /* Add space below each label */
+}
