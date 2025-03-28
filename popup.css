@@ -127,9 +127,11 @@ button:active {
     padding: 12px;
     border-radius: 8px;
     margin-bottom: 16px;
-    font-weight: 600;
+    font-weight: 800;
     font-size: 18px;
     width: 100%;
+    text-align: center;
+    /* Added this line */
 }
 
 /* Button styling */
