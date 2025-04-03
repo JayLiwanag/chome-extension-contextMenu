@@ -38,7 +38,8 @@
     "web_accessible_resources": [
         {
             "resources": [
-                "*.json"
+                "*.json",
+                "*.txt"
             ],
             "matches": [
                 "<all_urls>"

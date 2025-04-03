@@ -1,6 +1,7 @@
 const prompt1JSON = chrome.runtime.getURL('./Prompt/prompt1.json');
 const prompt2JSON = chrome.runtime.getURL('./Prompt/prompt2.json');
 const prompt3JSON = chrome.runtime.getURL('./Prompt/prompt3.json');
+const ruleFile = chrome.runtime.getURL('./Rule.txt');
 
 // Get JSON data from file
 async function getJsonData(path) {
@@ -9,6 +10,11 @@ async function getJsonData(path) {
     return object
 }
 
+async function getTextData(path) {
+    let reponse = await fetch(path);
+    let object = await reponse.text();
+    return object
+}
 // Get Rule JSON data from file
 function getRuleJson(ruleFile) {
     let path = chrome.runtime.getURL('./Rules/' + ruleFile);
@@ -48,6 +54,9 @@ chrome.runtime.onMessage.addListener(async (request, sender, sendResponse) => {
 
         // Store selected text
         chrome.storage.local.set({ selectedText: selectedText });
+
+        let ruleData = await getTextData(ruleFile);
+        console.log(ruleData);
 
         // get promt1 JSON data and store specific item
         let prompt1 = await getJsonData(prompt1JSON);

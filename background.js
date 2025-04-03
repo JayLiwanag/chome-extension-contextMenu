@@ -19,12 +19,27 @@ chrome.contextMenus.onClicked.addListener((info) => {
 
 chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
     if (request.action === 'openPopup') {
-        chrome.windows.create({
-            url: 'popup.html',
-            type: 'popup',
-            width: 450,
-            height: 600,
-            focused: true
+        // Get the screen dimensions
+        const width = 450;
+        const height = 600;
+
+        // Get primary screen width and height
+        chrome.windows.getAll({ windowTypes: ['normal'] }, (windows) => {
+            // Find the rightmost position
+            let maxRight = 0;
+            windows.forEach(window => {
+                maxRight = Math.max(maxRight, window.left + window.width);
+            });
+
+            chrome.windows.create({
+                url: 'popup.html',
+                type: 'popup',
+                width: width,
+                height: height,
+                left: maxRight - width - 20, // 20px offset from right edge
+                top: 20, // 20px from top
+                focused: true
+            });
         });
     }
 });

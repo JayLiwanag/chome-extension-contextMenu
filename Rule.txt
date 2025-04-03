@@ -1,0 +1,1 @@
+Testing the rule.txt file if imported properly.
